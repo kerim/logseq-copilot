@@ -20,15 +20,18 @@ The original extension was experiencing **500 errors** and **failed to display s
 1. **Fixed API Method Names** - Updated to use correct Logseq API namespaces (`logseq.App.*`, `logseq.Editor.*`)
 2. **Fixed UUID Data Structure** - Corrected mismatch between expected and actual API response format
 3. **Fixed getPage Method** - Changed from non-existent `get_page` to `logseq.Editor.getPage`
+4. **Added Kagi.com Support** - Improved integration with Kagi search engine with proper sidebar layout
 
 **👉 See [README-FIXES.md](README-FIXES.md) for complete technical details of all fixes.**
 
 ## Features
 
-- 🔍 Show Logseq content when you search on popular search engines via your keywords. Now support Google, Bing, Ecosia, Baidu, Yandex, DuckDuckGo, SearX.
+- 🔍 Show Logseq content when you search on popular search engines via your keywords
+- **Supported search engines**: Google, Bing, Ecosia, Baidu, Yandex, DuckDuckGo, SearX, **Kagi**, Startpage
 - ✅ **Full support for Logseq DB graphs** (fixed in this fork)
-- Recall your note on every page.
-- QuickCapture & advance quick capture, easy and fast making note in Logseq.
+- 🔎 **Enhanced Kagi.com integration** with automatic sidebar creation (new in this fork)
+- Recall your note on every page
+- QuickCapture & advance quick capture, easy and fast making note in Logseq
 
 ## Installation
 
