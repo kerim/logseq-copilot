@@ -1,4 +1,6 @@
-# Logseq Copilot 🚀
+# Logseq Copilot 🚀 - DB Graph Fixed Fork
+
+> **Note**: This is a fork of [EINDEX/logseq-copilot](https://github.com/EINDEX/logseq-copilot) with critical fixes for Logseq DB (database) graph compatibility. See [README-FIXES.md](README-FIXES.md) for detailed information about the fixes.
 
 <p align="center">
   <a href="LICENSE" target="_blank">
@@ -7,59 +9,69 @@
 
   <!-- TypeScript Badge -->
   <img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-blue?style=flat-square&logo=typescript&logoColor=white" />
-
-  <a href="https://chrome.google.com/webstore/detail/hihgfcgbmnbomabfdbajlbpnacndeihl" target="_blank">
-    <img alt="Chrome" src="https://img.shields.io/chrome-web-store/stars/hihgfcgbmnbomabfdbajlbpnacndeihl?color=blue&label=Chrome&style=flat-square&logo=google-chrome&logoColor=white" />
-  </a>
-
-  <a href="https://microsoftedge.microsoft.com/addons/detail/logseq-copilot/ebigopegbohijaikegebaaboaomaifoi" target="_blank">
-    <img alt="Microsoft Edge" src="https://img.shields.io/badge/Microsoft%20Edge-gray?style=flat-square&logo=microsoftedge">
-  </a>
-
-  <a href="https://addons.mozilla.org/en-US/firefox/addon/logseq-copilot/" target="_blank">
-    <img alt="Firefox" src="https://img.shields.io/amo/stars/logseq-copilot?color=orange&label=Firefox&style=flat-square&logo=firefox&logoColor=white" />
-  </a>
 </p>
-
 
 Logseq Copilot is a Chrome extension that allows you to access your Logseq using your browser. Logseq is a privacy-first, open-source platform for knowledge sharing and management. With Logseq Copilot, you can easily retrieve relevant information from your Logseq graph and enrich your online search, reading, and learning experience. 🧠
 
-[Documents](https://logseq-copilot.eindex.me)
+## ⚠️ What's Different in This Fork
+
+The original extension was experiencing **500 errors** and **failed to display search results** when used with Logseq DB graphs. This fork fixes three critical issues:
+
+1. **Fixed API Method Names** - Updated to use correct Logseq API namespaces (`logseq.App.*`, `logseq.Editor.*`)
+2. **Fixed UUID Data Structure** - Corrected mismatch between expected and actual API response format
+3. **Fixed getPage Method** - Changed from non-existent `get_page` to `logseq.Editor.getPage`
+
+**👉 See [README-FIXES.md](README-FIXES.md) for complete technical details of all fixes.**
 
 ## Features
 
 - 🔍 Show Logseq content when you search on popular search engines via your keywords. Now support Google, Bing, Ecosia, Baidu, Yandex, DuckDuckGo, SearX.
-- Support Logseq DB version.
+- ✅ **Full support for Logseq DB graphs** (fixed in this fork)
 - Recall your note on every page.
+- QuickCapture & advance quick capture, easy and fast making note in Logseq.
 
-## Support
-<p align="center">
-   <a href="https://img.shields.io/github/sponsors/eindex" target="_blank">
-      <img alt="GitHub Sponsors" src="https://img.shields.io/github/sponsors/eindex?style=flat-square&logo=github">
-   </a>
-  <a href="https://www.buymeacoffee.com/eindex" target="_blank">
-    <img alt="Buy me a Coffee" src="https://img.shields.io/badge/Buy%20me%20a%20coffee-gray?style=flat-square&logo=buymeacoffee">
-  </a>
-</p>
+## Installation
+
+### Prerequisites
+
+1. **Enable Logseq HTTP API**:
+   - Open Logseq → Settings → Features
+   - Enable "HTTP APIs server"
+   - Set an authorization token
+   - Note the port (default: 12315)
+
+### Build the Extension
+
+```bash
+git clone https://github.com/kerim/logseq-copilot.git
+cd logseq-copilot
+pnpm install
+pnpm run build
+```
+
+### Load in Chrome
+
+1. Go to `chrome://extensions`
+2. Enable "Developer mode"
+3. Click "Load unpacked"
+4. Select the `build/chrome-mv3-prod/` directory
+
+### Configure
+
+1. Click the extension icon
+2. Enter:
+   - **Host**: `localhost`
+   - **Port**: `12315`
+   - **Token**: Your Logseq API token
+3. Click "Test Connection"
 
 ## Screenshot
 
 ![](docs/screenshots/screenshot.png)
 
-## Roadmap
+## Original Documentation
 
-- [x] 🚦 CI/CD: Set up a continuous integration and delivery pipeline for the extension development and deployment. 🚦
-
-- [x] 🔍 Support other search engines: Extend the functionality of the extension to other popular search engines, such as Bing, DuckDuckGo, and Baidu. 
-- [x] 💅 Style enhancement: Improve the appearance and usability of the extension interface and the blocks display.
-- [x] 🌐 Support Firefox.
-- [x] 🆕 Browser new tab page queries: Add an option to show Logseq blocks on the browser's new tab page based on predefined or random queries. 
-- [x] QuickCapture & advance quick capture, easy and fast making note in Logseq.
-
-- ~~Enhance search ranking for better blocks: Implement a more sophisticated algorithm for ranking the blocks based on their relevance to the search query and the user preferences. 📊~~ Now this feature depends on Logseq Searching API
-- ~~Query enhance to recall more blocks: Implement a more flexible and powerful query system for retrieving the blocks from the Logseq graph, such as using natural language or advanced operators. 🗣️~~ Now this feature depends on Logseq Searching API
-
-_Welcoming more ideas._
+[Original Documentation](https://logseq-copilot.eindex.me)
 
 ## Contributing
 
@@ -69,16 +81,11 @@ Logseq Copilot is an open-source project and welcomes contributions from anyone 
 - Create a new branch for your feature or bug fix. 🌿
 - Make your changes and commit them with a clear and concise message.
 
-
-
 ## Credits
 
 - [Logseq](https://logseq.com)
+- [Original Logseq Copilot by EINDEX](https://github.com/EINDEX/logseq-copilot)
 - [chatGPT4Google](https://github.com/wong2/chatgpt-google-extension)
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=eindex/logseq-copilot&type=Date)](https://star-history.com/#eindex/logseq-copilot&Date)
 
 ## License
 
